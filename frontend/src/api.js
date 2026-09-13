@@ -1,6 +1,5 @@
 import { supabase } from "./supabase.js";
 
-// const API = "/api";
 const API = import.meta.env.VITE_API_URL;
 
 async function request(endpoint, options = {}) {
@@ -54,7 +53,7 @@ export function analyzeFrame(
   image_base64,
   mime_type = "image/jpeg"
 ) {
-  return request("/world/analyze-frame", {
+  return request("/api/world/analyze-frame", {
     method: "POST",
     body: JSON.stringify({
       image_base64,
@@ -64,7 +63,7 @@ export function analyzeFrame(
 }
 
 export function resetWorld() {
-  return request("/world/reset", {
+  return request("/api/world/reset", {
     method: "POST"
   });
 }
@@ -75,14 +74,14 @@ export function resetWorld() {
 // ===============================
 
 export function getStoryOptions(scene) {
-  return request("/story/options", {
+  return request("/api/story/options", {
     method: "POST",
     body: JSON.stringify(scene)
   });
 }
 
 export function startStory(story, scene) {
-  return request("/story/start", {
+  return request("/api/story/start", {
     method: "POST",
     body: JSON.stringify({
       story,
@@ -92,19 +91,19 @@ export function startStory(story, scene) {
 }
 
 export function getStoryHistory() {
-  return request("/story/history", {
+  return request("/api/story/history", {
     method: "GET"
   });
 }
 
 export function getStoryHistoryById(story_id) {
-  return request(`/story/history/${story_id}`, {
+  return request(`/api/story/history/${story_id}`, {
     method: "GET"
   });
 }
 
 export function resumeStory(story_id) {
-  return request(`/story/resume/${story_id}`, {
+  return request(`/api/story/resume/${story_id}`, {
     method: "POST"
   });
 }
@@ -115,13 +114,13 @@ export function resumeStory(story_id) {
 // ===============================
 
 export function getGameState() {
-  return request("/game/state", {
+  return request("/api/game/state", {
     method: "GET"
   });
 }
 
 export function gameAction(action, target_id = null) {
-  return request("/game/action", {
+  return request("/api/game/action", {
     method: "POST",
     body: JSON.stringify({
       action,
@@ -136,7 +135,7 @@ export function gameAction(action, target_id = null) {
 // ===============================
 
 export function scanGameObjects(scene) {
-  return request("/game/scan", {
+  return request("/api/game/scan", {
     method: "POST",
     body: JSON.stringify(scene)
   });
@@ -148,7 +147,7 @@ export function scanGameObjects(scene) {
 // ===============================
 
 export function adaptStory(payload) {
-  return request("/story/adapt", {
+  return request("/api/story/adapt", {
     method: "POST",
     body: JSON.stringify(payload)
   });
