@@ -1,6 +1,7 @@
 import { supabase } from "./supabase.js";
 
-const API = "/api";
+// const API = "/api";
+const API = import.meta.env.VITE_API_URL;
 
 async function request(endpoint, options = {}) {
   // Get the currently logged-in Supabase session
