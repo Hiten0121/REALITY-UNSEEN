@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic>=2
+pydantic-settings
+sqlalchemy
+requests
+google-genai
+groq
+python-multipart
+opencv-python
