@@ -10,3 +10,4 @@ groq
 python-multipart
 opencv-python
 PyJWT
+supabase
